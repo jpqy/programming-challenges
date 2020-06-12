@@ -4,22 +4,19 @@
  * @param {*} ar The array of sock colours
  */
 function sockMerchant(n, ar) {
-  // Generate frequencies table of sock colours
-  const frequency = {};
-  for (const element of ar) {
-    if (frequency[element]) {
-      frequency[element]++;
-    } else {
-      frequency[element] = 1;
-    }
-  }
-
-  // Do integer division by 2 on frequency values
   let pairs = 0;
-  for (const sock in frequency) {
-    pairs += Math.floor(frequency[sock] / 2);
+
+  // Keep track of unpaired socks, use it for increment logic
+  const unpaired = {};
+  for (const sock of ar) {
+    if (unpaired[sock]) {
+      pairs++;
+      unpaired[sock] = false;
+    } else {
+      unpaired[sock] = true;
+    }
   }
   return pairs;
 }
 
-console.log(sockMerchant(1, [1, 1, 1, 2, 2, 3, 4]));
+console.log(sockMerchant(1, [1, 1, 1, 2, 2, 2, 2, 3, 4]));
