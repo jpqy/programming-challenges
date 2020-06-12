@@ -16,7 +16,7 @@
       "Player 2 won!"))
 
 (ns rock-paper-scissors-tests
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [are deftest testing run-tests]]
             [rock-paper-scissors :refer [rps]]))
 
 (deftest rps-tests
